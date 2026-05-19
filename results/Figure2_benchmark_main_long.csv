@@ -1,0 +1,16 @@
+Method,Metric,Score,MethodColor
+Uncorrected,Batch mixing score,0.675116777420044,#7f7f7f
+Harmony,Batch mixing score,0.9530073963105679,#4c78a8
+Scanorama,Batch mixing score,0.9915227593904974,#f58518
+Seurat RPCA,Batch mixing score,0.9309540832842964,#54a24b
+CONCORD,Batch mixing score,0.9369773417711258,#b279a2
+Uncorrected,Cell-type ASW,0.0762416496872901,#7f7f7f
+Harmony,Cell-type ASW,0.2072661817073822,#4c78a8
+Scanorama,Cell-type ASW,0.0894816397278685,#f58518
+Seurat RPCA,Cell-type ASW,0.0930040977982315,#54a24b
+CONCORD,Cell-type ASW,0.1688273400068283,#b279a2
+Uncorrected,Leiden ARI,0.3281656569609719,#7f7f7f
+Harmony,Leiden ARI,0.4427147470112029,#4c78a8
+Scanorama,Leiden ARI,0.3329093046546815,#f58518
+Seurat RPCA,Leiden ARI,0.4048836249723765,#54a24b
+CONCORD,Leiden ARI,0.3074369090997455,#b279a2
