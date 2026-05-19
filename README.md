@@ -12,11 +12,11 @@ The project is organized so the fixed report outputs can be reproduced without c
 - Environment snapshots for recovery are stored in `env_recovery/`
 
 ## GitHub Repository Contents
-- Recommended upload set: `README.md`, `FILE_MANIFEST.md`, `ICA2_pancreas_batch_correction_RECOVERED.ipynb`, `run_seurat_rpca_preprocessed.R`, `make_polished_benchmark_figures_v6.py`, `requirements.txt`, `results/benchmark_metrics.csv`, `results/Figure2_benchmark_main_wide.csv`, `results/Figure2_benchmark_main_long.csv`, and selected final figures if desired
-- `results/polished_figure_input.h5ad` is about 270 MB and `results/adata_bench_for_scib.h5ad` is about 281 MB, so they should not be pushed to a standard GitHub repository without Git LFS
-- If the `.h5ad` files are kept local, document that the workflow still runs in the order listed below once those files are placed back into `results/`
-- The processed input `data/pancreas.h5ad` may also be omitted from GitHub if redistribution is not appropriate; in that case keep the file path and data note in this README
-- This repository focuses on code, workflow documentation, and source metric tables; final figures used in the report were curated locally and are not required for the GitHub upload.
+- This repository contains the documented notebook, the Seurat RPCA integration script, the final plotting script, the dependency list, and the source metric tables used in the report.
+- `results/benchmark_metrics.csv` is the source-of-truth table for the final reported core metrics, and `results/Figure2_benchmark_main_wide.csv` plus `results/Figure2_benchmark_main_long.csv` are derived directly from it.
+- Large intermediate AnnData files such as `results/polished_figure_input.h5ad` and `results/adata_bench_for_scib.h5ad` are not included in this GitHub version because they exceed the size expected for a lightweight code repository.
+- The processed input dataset `data/pancreas.h5ad` should be downloaded separately from [Dropbox](https://www.dropbox.com/s/qj1jlm9w10wmt0u/pancreas.h5ad?dl=1) and placed back into `data/` before rerunning the full workflow.
+- This GitHub version focuses on code, workflow documentation, and source metric tables; final figures used in the report were curated locally and are not required here.
 
 ## Expected Structure
 - `data/pancreas.h5ad`: processed pancreas AnnData used as the notebook input
