@@ -807,6 +807,13 @@ def _friendly_scib_name(name: str) -> str:
     return mapping.get(name, name)
 
 
+def _text_color_for_fill(fill_color, dark: str = "white", light: str = "#222222", threshold: float = 0.52) -> str:
+    """Use white text on dark fills so labels stay readable in the scIB-style table."""
+    r, g, b, _ = mpl.colors.to_rgba(fill_color)
+    luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    return dark if luminance < threshold else light
+
+
 def make_supplementary_figure_s3_from_csv(scib_csv: str, outdir: Path) -> None:
     """Redraw a scaled scIB-style benchmark table from an existing CSV only."""
     csv_path = Path(scib_csv)
@@ -910,7 +917,8 @@ def make_supplementary_figure_s3_from_csv(scib_csv: str, outdir: Path) -> None:
             radius = 0.23 if metric_types.get(name, "") != "Aggregate score" else 0.20
             circ = plt.Circle((x, y), radius=radius, facecolor=color, edgecolor="none", alpha=0.95)
             ax.add_patch(circ)
-            ax.text(x, y, f"{value:.2f}", ha="center", va="center", fontsize=6.8, color="#222222")
+            txt_color = _text_color_for_fill(color)
+            ax.text(x, y, f"{value:.2f}", ha="center", va="center", fontsize=6.8, color=txt_color)
 
         for name in aggregate_cols:
             value = float(row[name])
@@ -918,7 +926,7 @@ def make_supplementary_figure_s3_from_csv(scib_csv: str, outdir: Path) -> None:
             color = agg_cmap(value)
             rect = Rectangle((x - 0.36, y - 0.18), 0.72, 0.36, facecolor=color, edgecolor="white", linewidth=0.4)
             ax.add_patch(rect)
-            txt_color = "white" if value > 0.60 else "#0f172a"
+            txt_color = _text_color_for_fill(color, light="#0f172a")
             ax.text(x, y, f"{value:.2f}", ha="center", va="center", fontsize=6.6, color=txt_color)
 
     ax.hlines(n_rows - 0.05, xmin=0.0, xmax=18.1, color="#777777", lw=1.0)
